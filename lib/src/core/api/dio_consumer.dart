@@ -14,8 +14,6 @@ class DioConsumer implements ApiConsumer {
             connectTimeout: 3000,
             receiveTimeout: 3000,
             contentType: Endpoints.contentType,
-            // queryParameters: Endpoints.params,
-            // headers: Endpoints.headers,
             responseType: ResponseType.json,
           ),
         );

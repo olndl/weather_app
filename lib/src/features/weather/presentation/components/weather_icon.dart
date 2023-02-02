@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:weather_app/src/core/extensions/extensions.dart';
-import 'package:weather_app/src/gen/assets.gen.dart';
+import 'package:weather_app/src/core/utils/utils.dart';
 
 class WeatherIcon extends StatelessWidget {
-  const WeatherIcon({Key? key}) : super(key: key);
+  final String mood;
+  const WeatherIcon({Key? key, required this.mood}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Assets.lib.src.assets.svg.moonClear.svg(width: 70.percentOfWidth),
+      child: Utils.weatherIcon(mood, 70.percentOfWidth),
     );
   }
 }

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/src/core/extensions/extensions.dart';
 import 'package:weather_app/src/core/theme/colors_guide.dart';
+import 'package:weather_app/src/core/theme/typography.dart';
 
 class HourlyCard extends StatelessWidget {
-  const HourlyCard({Key? key}) : super(key: key);
+  final String time;
+  final String temp;
+  const HourlyCard({Key? key, required this.time, required this.temp})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,13 @@ class HourlyCard extends StatelessWidget {
           height: 10.percentOfHeight,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [Text('12:00'), Text('21C')],
+            children: [
+              Text(
+                time,
+                style: TextStyles.callout,
+              ),
+              Text(temp, style: TextStyles.callout)
+            ],
           ),
         ),
       ),

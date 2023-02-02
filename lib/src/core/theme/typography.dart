@@ -33,7 +33,7 @@ abstract class TextStyles {
   );
   static TextStyle headline = TextStyle(
     fontSize: 22,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.normal,
     letterSpacing: .37,
     color: ColorsGuide.primary,
     fontFamily: FontFamily.livvicThin,

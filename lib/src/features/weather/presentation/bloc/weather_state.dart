@@ -13,13 +13,15 @@ class WeatherLoading extends WeatherState {}
 
 class WeatherLoaded extends WeatherState {
   final Weather weather;
+  final HourlyForecast hourlyForecast;
 
   const WeatherLoaded({
+    required this.hourlyForecast,
     required this.weather,
   });
 
   @override
-  List<Object> get props => [weather];
+  List<Object> get props => [weather, hourlyForecast];
 }
 
 class WeatherError extends WeatherState {

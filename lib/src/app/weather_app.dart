@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/src/core/dimensions/adaptive_widget.dart';
 import 'package:weather_app/src/core/theme/app_theme.dart';
 import 'package:weather_app/src/di/injection_container.dart' as di;
-import 'package:weather_app/src/features/weather/bloc/weather_cubit.dart';
+import 'package:weather_app/src/features/weather/presentation/bloc/weather_cubit.dart';
 import 'package:weather_app/src/features/weather/presentation/pages/details_page.dart';
 
 class WeatherApp extends StatelessWidget {
