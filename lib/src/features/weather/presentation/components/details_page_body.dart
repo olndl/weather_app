@@ -34,6 +34,11 @@ class DetailsPageBody extends StatelessWidget {
           MainAppBar(
             cityName: weather.name,
           ),
+          SliverPadding(
+            padding: EdgeInsets.symmetric(
+              vertical: 1.percentOfHeight,
+            ),
+          ),
           WeatherIcon(
             mood: weather.weather.first.main,
           ),
@@ -47,7 +52,7 @@ class DetailsPageBody extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 20.percentOfWidth,
-                vertical: 5.percentOfHeight,
+                vertical: 3.percentOfHeight,
               ),
               child: CustomButton(
                 onPressed: () {

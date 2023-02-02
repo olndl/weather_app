@@ -26,7 +26,7 @@ class Utils {
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
             child: SizedBox(
-              height: 75.percentOfHeight,
+              height: 85.percentOfHeight,
               child: body,
             ),
           ),
@@ -61,40 +61,45 @@ class Utils {
     return directions[degrees];
   }
 
-  static bool isItDay() {
-    return DateTime.now().hour >= 6 && DateTime.now().hour < 18 ? true : false;
+  static bool isItDay({int? hour}) {
+    hour = hour ?? DateTime.now().hour;
+    return hour >= 6 && hour < 18 ? true : false;
   }
 
-  static Widget weatherIcon(String mood, double width) {
+  static String weatherIcon(String mood, {int? hour}) {
     switch (mood) {
       case 'Thunderstorm':
-        return isItDay()
-            ? Assets.lib.src.assets.svg.thunderstromDay.svg(width: width)
-            : Assets.lib.src.assets.svg.thunderstrom.svg(width: width);
+        return isItDay(hour: hour)
+            ? Assets.lib.src.assets.png.dayStorm.path
+            : Assets.lib.src.assets.png.nightStorm.path;
       case 'Drizzle':
-        return isItDay()
-            ? Assets.lib.src.assets.svg.drizzleDay.svg(width: width)
-            : Assets.lib.src.assets.svg.drizzleNight.svg(width: width);
+        return isItDay(hour: hour)
+            ? Assets.lib.src.assets.png.dayRain.path
+            : Assets.lib.src.assets.png.nightRain.path;
       case 'Rain':
-        return isItDay()
-            ? Assets.lib.src.assets.svg.drizzleDay.svg(width: width)
-            : Assets.lib.src.assets.svg.drizzleNight.svg(width: width);
+        return isItDay(hour: hour)
+            ? Assets.lib.src.assets.png.dayRain.path
+            : Assets.lib.src.assets.png.nightRain.path;
       case 'Snow':
-        return Assets.lib.src.assets.svg.snow.svg(width: width);
+        return isItDay(hour: hour)
+            ? Assets.lib.src.assets.png.daySnow.path
+            : Assets.lib.src.assets.png.nightSnow.path;
       case 'Atmosphere':
-        return Assets.lib.src.assets.svg.fog.svg(width: width);
+        return isItDay(hour: hour)
+            ? Assets.lib.src.assets.png.dayFog.path
+            : Assets.lib.src.assets.png.nightFog.path;
       case 'Clear':
-        return isItDay()
-            ? Assets.lib.src.assets.svg.clearDay.svg(width: width)
-            : Assets.lib.src.assets.svg.clearNignt.svg(width: width);
+        return isItDay(hour: hour)
+            ? Assets.lib.src.assets.png.dayClear.path
+            : Assets.lib.src.assets.png.clearNight.path;
       case 'Clouds':
-        return isItDay()
-            ? Assets.lib.src.assets.svg.cloudyDay.svg(width: width)
-            : Assets.lib.src.assets.svg.thunderstrom.svg(width: width);
+        return isItDay(hour: hour)
+            ? Assets.lib.src.assets.png.dayClouds.path
+            : Assets.lib.src.assets.png.nightClouds.path;
       default:
-        Container();
+        Assets.lib.src.assets.png.dayClear.path;
     }
-    return Container();
+    return Assets.lib.src.assets.png.dayClear.path;
   }
 
   static String pressureComment(int pressure) {
@@ -102,5 +107,29 @@ class Utils {
     return pressure > 749 && pressure < 766
         ? 'Normal atmospheric pressure'
         : 'This value of atmospheric pressure can affect your health';
+  }
+
+  static String feelsLikeComment(int temp, int feelsLike) {
+    if (!temp.isNegative) {
+      if (feelsLike.isNegative) {
+        return 'Feels colder';
+      } else {
+        if (feelsLike - temp > 0) {
+          return 'Feels warmer';
+        } else {
+          return 'Feels colder';
+        }
+      }
+    } else {
+      if (!feelsLike.isNegative) {
+        return 'Feels warmer';
+      } else {
+        if (feelsLike - temp > 0) {
+          return 'Feels warmer';
+        } else {
+          return 'Feels colder';
+        }
+      }
+    }
   }
 }

@@ -37,7 +37,10 @@ class WeatherDetailsCard extends StatelessWidget {
       child: Container(
         width: 20.percentOfWidth,
         height: 20.percentOfWidth,
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+        padding: EdgeInsets.symmetric(
+          vertical: 2.percentOfHeight,
+          horizontal: 4.percentOfWidth,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,8 +51,8 @@ class WeatherDetailsCard extends StatelessWidget {
                 Row(
                   children: [
                     icon,
-                    const SizedBox(
-                      width: 5,
+                    SizedBox(
+                      width: .5.percentOfWidth,
                     ),
                     Text(
                       title,
@@ -64,10 +67,14 @@ class WeatherDetailsCard extends StatelessWidget {
                 Row(
                   children: [
                     Text(param, style: TextStyles.title1),
-                    const SizedBox(
-                      width: 2,
+                    SizedBox(
+                      width: .5.percentOfWidth,
                     ),
-                    if (units != null) Text(units!, style: TextStyles.callout),
+                    if (units != null)
+                      Text(
+                        units!,
+                        style: TextStyles.callout.copyWith(fontSize: 14),
+                      ),
                   ],
                 ),
               ],
@@ -79,12 +86,15 @@ class WeatherDetailsCard extends StatelessWidget {
                       Stack(
                         alignment: Alignment.center,
                         children: [
-                          Assets.lib.src.assets.svg.windRose.svg(width: 90),
+                          Assets.lib.src.assets.svg.windRose
+                              .svg(width: 20.percentOfWidth),
                           Positioned(
                             child: Transform.rotate(
                               angle: Utils.fromDegreesToRadians(degrees!),
-                              child: Assets.lib.src.assets.svg.arrowUp
-                                  .svg(color: ColorsGuide.primary, width: 20),
+                              child: Assets.lib.src.assets.svg.arrowUp.svg(
+                                color: ColorsGuide.primary,
+                                width: 5.percentOfWidth,
+                              ),
                             ),
                           ),
                         ],
@@ -93,19 +103,22 @@ class WeatherDetailsCard extends StatelessWidget {
                         children: [
                           Text(
                             Utils.fromDegreesToDirection(degrees!),
-                            style: TextStyles.body,
+                            style: TextStyles.callout,
                           ),
-                          const SizedBox(
-                            width: 5,
+                          SizedBox(
+                            height: 1.percentOfHeight,
                           ),
-                          Text('$degrees°', style: TextStyles.body),
+                          Text(
+                            '$degrees°',
+                            style: TextStyles.callout,
+                          ),
                         ],
                       )
                     ],
                   )
                 : Text(
                     comment ?? '',
-                    style: TextStyles.callout,
+                    style: TextStyles.callout.copyWith(fontSize: 16),
                   ),
           ],
         ),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/src/core/constants/interface.dart';
 import 'package:weather_app/src/core/extensions/extensions.dart';
-import 'package:weather_app/src/features/weather/presentation/components/custom_button.dart';
 import 'package:weather_app/src/features/weather/presentation/components/custom_scaffold.dart';
 import 'package:weather_app/src/features/weather/presentation/components/edit_text.dart';
 import 'package:weather_app/src/gen/assets.gen.dart';
@@ -25,10 +23,6 @@ class SearchPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 2.percentOfWidth),
             child: const EditText(),
           ),
-          SizedBox(
-            height: 2.percentOfHeight,
-          ),
-          const CustomButton(title: Interface.approve)
         ],
       ),
     );

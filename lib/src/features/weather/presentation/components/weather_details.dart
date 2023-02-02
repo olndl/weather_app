@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:weather_app/src/core/theme/colors_guide.dart';
 import 'package:weather_app/src/core/theme/typography.dart';
 import 'package:weather_app/src/core/utils/utils.dart';
@@ -29,7 +32,10 @@ class WeatherDetails extends StatelessWidget {
             flex: 1,
             child: Center(
               child: Text(
-                'today',
+                DateFormat.yMMMMEEEEd(Platform.localeName).format(
+                  DateTime.now(),
+                ),
+                textAlign: TextAlign.center,
                 style: TextStyles.title1,
               ),
             ),
@@ -45,12 +51,14 @@ class WeatherDetails extends StatelessWidget {
                 return HourlyCard(
                   time: Utils.toDateTime(forecast.list[index].dt),
                   temp: '${forecast.list[index].main.temp.round()}°',
+                  hour: forecast.list[index].dt,
+                  mood: weather.weather.first.main,
                 );
               },
             ),
           ),
           Expanded(
-            flex: 5,
+            flex: 4,
             child: GridView.count(
               primary: false,
               padding: const EdgeInsets.all(10),
@@ -59,13 +67,15 @@ class WeatherDetails extends StatelessWidget {
               crossAxisCount: 2,
               children: <Widget>[
                 WeatherDetailsCard(
-                  title: 'wind'.toUpperCase(),
-                  icon: Assets.lib.src.assets.svg.wind
-                      .svg(color: ColorsGuide.secondary, width: 15),
-                  param: '${weather.wind.speed.round()}',
-                  units: 'm/sec',
-                  isWind: true,
-                  degrees: weather.wind.deg,
+                  title: 'feels like'.toUpperCase(),
+                  icon: Assets.lib.src.assets.svg.temp
+                      .svg(color: ColorsGuide.secondary),
+                  param: '${weather.main.feelsLike.round()}°',
+                  isWind: false,
+                  comment: Utils.feelsLikeComment(
+                    weather.main.temp.round(),
+                    weather.main.feelsLike.round(),
+                  ),
                 ),
                 WeatherDetailsCard(
                   title: 'sunrise'.toUpperCase(),
@@ -75,30 +85,14 @@ class WeatherDetails extends StatelessWidget {
                   isWind: false,
                   comment: 'Sunset: ${Utils.toDateTime(weather.sys.sunset)}',
                 ),
-                // WeatherDetailsCard(
-                //   title: 'feels like'.toUpperCase(),
-                //   icon: Assets.lib.src.assets.svg.temp
-                //       .svg(color: ColorsGuide.secondary),
-                //   param: '${weather.main.feelsLike.round()}°',
-                //   isWind: false,
-                //   comment: 'comment',
-                // ),
-                // WeatherDetailsCard(
-                //   title: 'humidity'.toUpperCase(),
-                //   icon: Assets.lib.src.assets.svg.humidity
-                //       .svg(color: ColorsGuide.secondary),
-                //   param: '${weather.main.humidity}%',
-                //   isWind: false,
-                //   comment: 'The dew point',
-                // ),
                 WeatherDetailsCard(
-                  title: 'visibility'.toUpperCase(),
-                  icon: Assets.lib.src.assets.svg.eye
+                  title: 'wind'.toUpperCase(),
+                  icon: Assets.lib.src.assets.svg.wind
                       .svg(color: ColorsGuide.secondary, width: 15),
-                  param: Utils.fromMtoKm(weather.visibility),
-                  units: 'km',
-                  isWind: false,
-                  comment: 'Moderate',
+                  param: '${weather.wind.speed.round()}',
+                  units: 'm/sec',
+                  isWind: true,
+                  degrees: weather.wind.deg,
                 ),
                 WeatherDetailsCard(
                   title: 'pressure'.toUpperCase(),

@@ -9,7 +9,14 @@ class WeatherIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Utils.weatherIcon(mood, 70.percentOfWidth),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.percentOfWidth),
+        child: Image.asset(
+          Utils.weatherIcon(
+            mood,
+          ),
+        ),
+      ),
     );
   }
 }

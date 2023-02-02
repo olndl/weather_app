@@ -15,7 +15,7 @@ class WeatherCubit extends Cubit<WeatherState> {
     required this.getWeatherUseCase,
     required this.getHourlyForecastUseCase,
   }) : super(WeatherInitial()) {
-    getWeatherAndForecast('a');
+    getWeatherAndForecast('Moscow');
   }
 
   Future<void> getWeatherAndForecast(String city) async {
