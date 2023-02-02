@@ -1,16 +1,19 @@
 # weather_app
 
-A new Flutter project.
+flutter weather app in progress.
 
-## Getting Started
+## Screenshots
+<p float="left">
+<img src="https://github.com/olndl/weather_app/blob/f/weather/screenshots/first_screen.png" width="200" height="400"/>
+<img src="https://github.com/olndl/weather_app/blob/f/weather/screenshots/second_screen.png" width="200" height="400"/>
+<img src="https://github.com/olndl/weather_app/blob/f/weather/screenshots/third_screen.png" width="200" height="400"/>
+</p>
 
-This project is a starting point for a Flutter application.
+## Packages Used
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- `flutter_bloc` for state management.
+- `dio` to work with Http client.
+- `freezed` - code generator for data-classes
+- `getit` for dependency inversion
+- `linter` - for code rules.
+- more at `pubspec.yaml`

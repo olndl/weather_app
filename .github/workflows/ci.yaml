@@ -1,0 +1,31 @@
+name: CI
+on:
+  pull_request:
+jobs:
+  lint-test-build-android:
+    name: Lint, Test And Build Android
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Setup app_secrets.dart
+        run: echo -n $SECRETS_FILE_CONTENT | base64 --decode > $SECRETS_FILE_CONTENT_PATH
+        env:
+          SECRETS_FILE_CONTENT: ${{ secrets.SECRETS_FILE_CONTENT }}
+          SECRETS_FILE_CONTENT_PATH: lib/src/app/app_secrets.dart
+
+      - name: Get Dependencies
+        run: flutter pub get
+
+      - name: Run build_runner
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Lint
+        run: flutter analyze --fatal-infos --fatal-warnings
+
+      - name: Build Android
+        run: flutter build apk --debug --split-per-abi
