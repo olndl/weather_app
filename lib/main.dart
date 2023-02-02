@@ -1,14 +1,22 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:weather_app/src/app/weather_app.dart';
+import 'package:weather_app/src/core/errors/logger.dart';
+import 'package:weather_app/src/di/injection_container.dart' as di;
 
 void main() {
-  runApp(const MyApp());
+  runZonedGuarded(
+    () async {
+      await _initialiseApp();
+      runApp(const WeatherApp());
+    },
+    (error, stack) => logger.info(stack),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+_initialiseApp() async {
+  initLogger();
+  logger.info('Initializing dependencies...');
+  await di.init();
 }
