@@ -2,7 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:weather_app/src/core/theme/typography.dart';
 
 class CurrantWeather extends StatelessWidget {
-  const CurrantWeather({Key? key}) : super(key: key);
+  final String temp;
+  final String weatherMood;
+  const CurrantWeather({
+    Key? key,
+    required this.weatherMood,
+    required this.temp,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,26 +17,26 @@ class CurrantWeather extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            '19C',
+            '$temp°',
             style: TextStyles.largeTitle,
           ),
           Text(
-            'Mostly Clear',
+            weatherMood,
             style: TextStyles.headline,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'H: 18',
-                style: TextStyles.headline,
-              ),
-              Text(
-                'L: 12',
-                style: TextStyles.headline,
-              )
-            ],
-          )
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     Text(
+          //       'H: 18',
+          //       style: TextStyles.headline,
+          //     ),
+          //     Text(
+          //       'L: 12',
+          //       style: TextStyles.headline,
+          //     )
+          //   ],
+          // )
         ],
       ),
     );

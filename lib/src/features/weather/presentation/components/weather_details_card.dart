@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/src/core/extensions/extensions.dart';
 import 'package:weather_app/src/core/theme/colors_guide.dart';
 import 'package:weather_app/src/core/theme/typography.dart';
 
 class WeatherDetailsCard extends StatelessWidget {
   final String title;
-  final IconData icon;
+  final SvgPicture icon;
   final String param;
   final String? comment;
   const WeatherDetailsCard({
@@ -26,29 +27,35 @@ class WeatherDetailsCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Container(
-        width: 40.percentOfWidth,
-        height: 40.percentOfWidth,
+        width: 20.percentOfWidth,
+        height: 20.percentOfWidth,
         padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(
-                  icon,
-                  color: ColorsGuide.secondary,
+                Row(
+                  children: [
+                    icon,
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      title,
+                      style: TextStyles.callout.copyWith(
+                        fontSize: 16,
+                        color: ColorsGuide.secondary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
                 ),
-                const SizedBox(
-                  width: 2,
-                ),
-                Text(
-                  title,
-                  style: TextStyles.body.copyWith(color: ColorsGuide.secondary),
-                )
+                Text(param, style: TextStyles.title1),
               ],
             ),
-            Text(param, style: TextStyles.title1),
             Text(
               comment ?? '',
               style: TextStyles.callout,

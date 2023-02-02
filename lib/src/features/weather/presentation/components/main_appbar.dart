@@ -3,7 +3,8 @@ import 'package:weather_app/src/core/theme/typography.dart';
 import 'package:weather_app/src/gen/assets.gen.dart';
 
 class MainAppBar extends StatelessWidget {
-  const MainAppBar({Key? key}) : super(key: key);
+  final String cityName;
+  const MainAppBar({Key? key, required this.cityName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class MainAppBar extends StatelessWidget {
       pinned: true,
       backgroundColor: Colors.transparent,
       title: Text(
-        'Montreal',
+        cityName,
         style: TextStyles.title1,
       ),
       leading: Assets.lib.src.assets.svg.hover.svg(),
