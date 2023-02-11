@@ -22,92 +22,102 @@ class WeatherDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DraggableScrollableSheet(
-      initialChildSize: 1.0,
-      minChildSize: .5,
-      expand: false,
-      builder: (_, controller) => Column(
-        children: [
-          Expanded(
-            flex: 1,
-            child: Center(
-              child: Text(
-                DateFormat.yMMMMEEEEd(Platform.localeName).format(
-                  DateTime.now(),
+    return Stack(
+      clipBehavior: Clip.none,
+      alignment: Alignment.topCenter,
+      children: [
+        Positioned(
+          child: Container(width: 60, height: 7,
+          margin: const EdgeInsets.symmetric(vertical: 5),
+          decoration: BoxDecoration(
+            color: Colors.grey.withOpacity(.5),
+            borderRadius: BorderRadius.circular(5),),),),
+        Column(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 3),
+                        child: Center(
+                          child: Text(
+                            DateFormat.yMMMMEEEEd(Platform.localeName).format(
+                              DateTime.now(),
+                            ),
+                            textAlign: TextAlign.center,
+                            style: TextStyles.body,
+                          ),
+                        ),
+                     ),
                 ),
-                textAlign: TextAlign.center,
-                style: TextStyles.title1,
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 2,
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              scrollDirection: Axis.horizontal,
-              shrinkWrap: true,
-              itemCount: forecast.list.take(8).length,
-              itemBuilder: (BuildContext context, int index) {
-                return HourlyCard(
-                  time: Utils.toDateTime(forecast.list[index].dt),
-                  temp: '${forecast.list[index].main.temp.round()}°',
-                  hour: forecast.list[index].dt,
-                  mood: weather.weather.first.main,
-                );
-              },
-            ),
-          ),
-          Expanded(
-            flex: 4,
-            child: GridView.count(
-              primary: false,
-              padding: const EdgeInsets.all(10),
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              crossAxisCount: 2,
-              children: <Widget>[
-                WeatherDetailsCard(
-                  title: 'feels like'.toUpperCase(),
-                  icon: Assets.lib.src.assets.svg.temp
-                      .svg(color: ColorsGuide.secondary),
-                  param: '${weather.main.feelsLike.round()}°',
-                  isWind: false,
-                  comment: Utils.feelsLikeComment(
-                    weather.main.temp.round(),
-                    weather.main.feelsLike.round(),
+                Expanded(
+                  flex: 3,
+                  child: ListView.builder(
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: forecast.list.take(8).length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return HourlyCard(
+                              time: Utils.toDateTimeHM(forecast.list[index].dt),
+                              temp: '${forecast.list[index].main.temp.round()}°',
+                              hour: forecast.list[index].dt,
+                              mood: weather.weather.first.main,
+                            );
+                          },
+
+               ),
+                ),
+                Expanded(
+                  flex: 8,
+                  child: GridView.count(
+                    primary: false,
+                    padding: const EdgeInsets.all(10),
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    crossAxisCount: 2,
+                    children: <Widget>[
+                      WeatherDetailsCard(
+                        title: 'feels like'.toUpperCase(),
+                        icon: Assets.lib.src.assets.svg.temp
+                            .svg(color: ColorsGuide.secondary),
+                        param: '${weather.main.feelsLike.round()}°',
+                        isWind: false,
+                        comment: Utils.feelsLikeComment(
+                          weather.main.temp.round(),
+                          weather.main.feelsLike.round(),
+                        ),
+                      ),
+                      WeatherDetailsCard(
+                        title: 'sunrise'.toUpperCase(),
+                        icon: Assets.lib.src.assets.svg.sunrise
+                            .svg(color: ColorsGuide.secondary, width: 15),
+                        param: Utils.toDateTimeHM(weather.sys.sunrise),
+                        isWind: false,
+                        comment: 'Sunset: ${Utils.toDateTimeHM(weather.sys.sunset)}',
+                      ),
+                      WeatherDetailsCard(
+                        title: 'wind'.toUpperCase(),
+                        icon: Assets.lib.src.assets.svg.wind
+                            .svg(color: ColorsGuide.secondary, width: 15),
+                        param: '${weather.wind.speed.round()}',
+                        units: 'm/sec',
+                        isWind: true,
+                        degrees: weather.wind.deg,
+                      ),
+                      WeatherDetailsCard(
+                        title: 'pressure'.toUpperCase(),
+                        icon: Assets.lib.src.assets.svg.arrowDown
+                            .svg(color: ColorsGuide.secondary, width: 15),
+                        param: '${Utils.fromHPaToMMhg(weather.main.pressure)}',
+                        units: 'mm Hg',
+                        isWind: false,
+                        comment: Utils.pressureComment(weather.main.pressure),
+                      ),
+                    ],
                   ),
-                ),
-                WeatherDetailsCard(
-                  title: 'sunrise'.toUpperCase(),
-                  icon: Assets.lib.src.assets.svg.sunrise
-                      .svg(color: ColorsGuide.secondary, width: 15),
-                  param: Utils.toDateTime(weather.sys.sunrise),
-                  isWind: false,
-                  comment: 'Sunset: ${Utils.toDateTime(weather.sys.sunset)}',
-                ),
-                WeatherDetailsCard(
-                  title: 'wind'.toUpperCase(),
-                  icon: Assets.lib.src.assets.svg.wind
-                      .svg(color: ColorsGuide.secondary, width: 15),
-                  param: '${weather.wind.speed.round()}',
-                  units: 'm/sec',
-                  isWind: true,
-                  degrees: weather.wind.deg,
-                ),
-                WeatherDetailsCard(
-                  title: 'pressure'.toUpperCase(),
-                  icon: Assets.lib.src.assets.svg.arrowDown
-                      .svg(color: ColorsGuide.secondary, width: 15),
-                  param: '${Utils.fromHPaToMMhg(weather.main.pressure)}',
-                  units: 'mm Hg',
-                  isWind: false,
-                  comment: Utils.pressureComment(weather.main.pressure),
-                ),
+                )
               ],
-            ),
-          )
-        ],
-      ),
+        ),
+    ],
     );
   }
 }

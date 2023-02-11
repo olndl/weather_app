@@ -22,6 +22,7 @@ class HoursForecastList with _$HoursForecastList {
     required int dt,
     required MainInfo main,
     required List<WeatherData> weather,
+    required Wind wind,
   }) = _HoursForecastList;
 
   factory HoursForecastList.fromJson(Map<String, dynamic> json) =>
@@ -50,4 +51,15 @@ class WeatherData with _$WeatherData {
 
   factory WeatherData.fromJson(Map<String, dynamic> json) =>
       _$WeatherDataFromJson(json);
+}
+
+@freezed
+class Wind with _$Wind {
+  const factory Wind({
+    required double speed,
+    required int deg,
+    required double gust,
+  }) = _Wind;
+
+  factory Wind.fromJson(Map<String, dynamic> json) => _$WindFromJson(json);
 }

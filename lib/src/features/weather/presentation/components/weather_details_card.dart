@@ -50,9 +50,9 @@ class WeatherDetailsCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    icon,
-                    SizedBox(
-                      width: .5.percentOfWidth,
+                    Padding(
+                      padding: const EdgeInsets.only(right: 5),
+                      child: icon,
                     ),
                     Text(
                       title,
@@ -71,9 +71,12 @@ class WeatherDetailsCard extends StatelessWidget {
                       width: .5.percentOfWidth,
                     ),
                     if (units != null)
-                      Text(
-                        units!,
-                        style: TextStyles.callout.copyWith(fontSize: 14),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          units!,
+                          style: TextStyles.callout.copyWith(fontSize: 14),
+                        ),
                       ),
                   ],
                 ),
