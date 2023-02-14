@@ -1,11 +1,12 @@
 import 'dart:io';
 import 'dart:math' as math;
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/src/core/extensions/extensions.dart';
 import 'package:weather_app/src/core/theme/colors_guide.dart';
-import 'package:weather_app/src/features/weather/domain/models/hourly_forecast.dart';
+import 'package:weather_app/src/features/domain/models/hourly_forecast.dart';
 import 'package:weather_app/src/gen/assets.gen.dart';
 
 class Utils {
@@ -14,29 +15,33 @@ class Utils {
       context: context,
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
-            shape: RoundedRectangleBorder(
-              side: BorderSide(color: ColorsGuide.primary, width: .3),
-              borderRadius: BorderRadius.circular(40),
-            ),
       builder: (context) => DraggableScrollableSheet(
         expand: false,
-          initialChildSize: .4,
-          maxChildSize: .9,
-          minChildSize: .32,
-          builder: (BuildContext context, ScrollController scrollController){
-            return SingleChildScrollView(
-              controller: scrollController,
-              child: Card(
-                elevation: 5,
-                color: ColorsGuide.solid.withOpacity(0.5),
-                  child: ClipRect(
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-                    child: SizedBox(
-                      height: 100.percentOfHeight,
-                      child: body,),),
-            ),),);
-          },
+        initialChildSize: .35,
+        maxChildSize: 1,
+        minChildSize: .32,
+        builder: (BuildContext context, ScrollController scrollController) {
+          return SingleChildScrollView(
+            controller: scrollController,
+            child: Card(
+              elevation: 5,
+              color: ColorsGuide.solid.withOpacity(0.5),
+              shape: RoundedRectangleBorder(
+                side: BorderSide(color: ColorsGuide.primary, width: .3),
+                borderRadius: BorderRadius.circular(40),
+              ),
+              child: ClipRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                  child: SizedBox(
+                    height: 100.percentOfHeight,
+                    child: body,
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -70,9 +75,18 @@ class Utils {
   }
 
   static String fromDegreesToDirection(int degrees) {
-    List<String> directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+    List<String> directions = [
+      'N',
+      'NE',
+      'E',
+      'SE',
+      'S',
+      'SW',
+      'W',
+      'NW',
+    ];
     degrees = (degrees * 8 / 360).round();
-    return directions[degrees];
+    return degrees > 7 ? directions[0] : directions[degrees];
   }
 
   static bool isItDay({int? hour}) {
@@ -124,6 +138,9 @@ class Utils {
   }
 
   static String feelsLikeComment(int temp, int feelsLike) {
+    if (feelsLike == temp) {
+      return 'Relevant';
+    }
     if (!temp.isNegative) {
       if (feelsLike.isNegative) {
         return 'Feels colder';
@@ -147,6 +164,23 @@ class Utils {
     }
   }
 
+  static String airQualityComment(int aqi) {
+    switch (aqi) {
+      case 1:
+        return 'Low health risk';
+      case 2:
+        return 'Low health risk';
+      case 3:
+        return 'Moderate health risk';
+      case 4:
+        return 'High health risk';
+      case 5:
+        return 'Very high health risk';
+      default:
+        return 'No information';
+    }
+  }
+
   static List<HoursForecastList> mergeSort(List<HoursForecastList> array) {
     if (array.length <= 1) {
       return array;
@@ -161,7 +195,9 @@ class Utils {
   }
 
   static List<HoursForecastList> merge(
-      List<HoursForecastList> leftArray, List<HoursForecastList> rightArray,) {
+    List<HoursForecastList> leftArray,
+    List<HoursForecastList> rightArray,
+  ) {
     List<HoursForecastList> result = [];
     int? i = 0;
     int? j = 0;
@@ -188,5 +224,4 @@ class Utils {
 
     return result;
   }
-
 }

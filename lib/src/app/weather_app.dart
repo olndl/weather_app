@@ -4,9 +4,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:weather_app/src/core/dimensions/adaptive_widget.dart';
 import 'package:weather_app/src/core/theme/app_theme.dart';
 import 'package:weather_app/src/di/injection_container.dart' as di;
-import 'package:weather_app/src/features/weather/presentation/bloc/weather_cubit.dart';
-import 'package:weather_app/src/features/weather/presentation/pages/search_page.dart';
 import 'package:weather_app/src/core/localization/l10n/s.dart';
+import 'package:weather_app/src/features/presentation/bloc/weather_bloc.dart';
+import 'package:weather_app/src/features/presentation/weather/pages/search_page.dart';
 
 class WeatherApp extends StatelessWidget {
   const WeatherApp({Key? key}) : super(key: key);
@@ -16,13 +16,13 @@ class WeatherApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => di.injector<WeatherCubit>(),
+          create: (context) => di.injector<WeatherBloc>(),
         ),
       ],
       child: AdaptiveWidget(
         builder: (context, orientation) {
           return MaterialApp(
-            localizationsDelegates:  const [
+            localizationsDelegates: const [
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
