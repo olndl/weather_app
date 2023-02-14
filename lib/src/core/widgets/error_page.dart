@@ -104,8 +104,13 @@ class ErrorPage extends StatelessWidget {
                             ),
                           );
                         },
-                        icon: Assets.lib.src.assets.svg.hover
-                            .svg(color: ColorsGuide.darkSolid, width: 60),
+                        icon: Assets.lib.src.assets.svg.hover.svg(
+                          colorFilter: ColorFilter.mode(
+                            ColorsGuide.darkSolid,
+                            BlendMode.srcIn,
+                          ),
+                          width: 60,
+                        ),
                       ),
                     ],
                   ),

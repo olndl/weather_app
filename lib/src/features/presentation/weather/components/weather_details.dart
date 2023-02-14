@@ -83,7 +83,10 @@ class WeatherDetails extends StatelessWidget {
                 param: airPollution.list?.first.main?.aqi.toString(),
                 airCoeff: airPollution.list?.first.main?.aqi,
                 icon: Assets.lib.src.assets.svg.air.svg(
-                  color: ColorsGuide.secondary,
+                  colorFilter: ColorFilter.mode(
+                    ColorsGuide.secondary,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 isAirQuality: true,
                 comment: Utils.airQualityComment(
@@ -103,8 +106,12 @@ class WeatherDetails extends StatelessWidget {
                 children: <Widget>[
                   WeatherDetailsCard(
                     title: 'feels like'.toUpperCase(),
-                    icon: Assets.lib.src.assets.svg.temp
-                        .svg(color: ColorsGuide.secondary),
+                    icon: Assets.lib.src.assets.svg.temp.svg(
+                      colorFilter: ColorFilter.mode(
+                        ColorsGuide.secondary,
+                        BlendMode.srcIn,
+                      ),
+                    ),
                     param: '${weather.main!.feelsLike!.round()}°',
                     comment: Utils.feelsLikeComment(
                       weather.main!.temp.round(),
@@ -113,8 +120,13 @@ class WeatherDetails extends StatelessWidget {
                   ),
                   WeatherDetailsCard(
                     title: 'wind'.toUpperCase(),
-                    icon: Assets.lib.src.assets.svg.wind
-                        .svg(color: ColorsGuide.secondary, width: 15),
+                    icon: Assets.lib.src.assets.svg.wind.svg(
+                      colorFilter: ColorFilter.mode(
+                        ColorsGuide.secondary,
+                        BlendMode.srcIn,
+                      ),
+                      width: 15,
+                    ),
                     param: '${weather.wind!.speed!.round()}',
                     units: 'm/sec',
                     isWind: true,
@@ -122,8 +134,13 @@ class WeatherDetails extends StatelessWidget {
                   ),
                   WeatherDetailsCard(
                     title: 'sunrise'.toUpperCase(),
-                    icon: Assets.lib.src.assets.svg.sunrise
-                        .svg(color: ColorsGuide.secondary, width: 15),
+                    icon: Assets.lib.src.assets.svg.sunrise.svg(
+                      colorFilter: ColorFilter.mode(
+                        ColorsGuide.secondary,
+                        BlendMode.srcIn,
+                      ),
+                      width: 15,
+                    ),
                     param: Utils.toDateTimeHM(weather.sys!.sunrise!),
                     isWind: false,
                     comment:
@@ -131,8 +148,13 @@ class WeatherDetails extends StatelessWidget {
                   ),
                   WeatherDetailsCard(
                     title: 'pressure'.toUpperCase(),
-                    icon: Assets.lib.src.assets.svg.arrowDown
-                        .svg(color: ColorsGuide.secondary, width: 15),
+                    icon: Assets.lib.src.assets.svg.arrowDown.svg(
+                      colorFilter: ColorFilter.mode(
+                        ColorsGuide.secondary,
+                        BlendMode.srcIn,
+                      ),
+                      width: 15,
+                    ),
                     param: '${Utils.fromHPaToMMhg(weather.main!.pressure)}',
                     units: 'mm Hg',
                     comment: Utils.pressureComment(weather.main!.pressure),

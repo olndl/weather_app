@@ -3,13 +3,13 @@
 ///  FlutterGen
 /// *****************************************************
 
-import 'package:flutter/services.dart';
 // coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 
 class $LibGen {
   const $LibGen();
@@ -27,7 +27,6 @@ class $LibSrcAssetsGen {
   const $LibSrcAssetsGen();
 
   $LibSrcAssetsPngGen get png => const $LibSrcAssetsPngGen();
-
   $LibSrcAssetsSvgGen get svg => const $LibSrcAssetsSvgGen();
 }
 
@@ -280,10 +279,10 @@ class SvgGenImage {
     String? semanticsLabel,
     bool excludeFromSemantics = false,
     SvgTheme theme = const SvgTheme(),
-    //ColorFilter? colorFilter,
+    ColorFilter? colorFilter,
     @deprecated Color? color,
     @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
-    //@deprecated Clip? clipBehavior,
+    @deprecated Clip? clipBehavior,
     @deprecated bool cacheColorFilter = false,
   }) {
     return SvgPicture.asset(
@@ -301,10 +300,10 @@ class SvgGenImage {
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
       theme: theme,
-      //colorFilter: colorFilter,
+      colorFilter: colorFilter,
       color: color,
       colorBlendMode: colorBlendMode,
-      //clipBehavior: clipBehavior,
+      clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
     );
   }

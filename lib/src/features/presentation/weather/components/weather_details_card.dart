@@ -144,7 +144,10 @@ class WeatherDetailsCard extends StatelessWidget {
                             child: Transform.rotate(
                               angle: Utils.fromDegreesToRadians(degrees!),
                               child: Assets.lib.src.assets.svg.arrowUp.svg(
-                                color: ColorsGuide.primary,
+                                colorFilter: ColorFilter.mode(
+                                  ColorsGuide.primary,
+                                  BlendMode.srcIn,
+                                ),
                                 width: 5.percentOfWidth,
                               ),
                             ),

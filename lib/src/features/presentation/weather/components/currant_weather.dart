@@ -9,6 +9,7 @@ class CurrantWeather extends StatelessWidget {
   final String weatherMood;
   final String humidity;
   final String windSpeed;
+
   const CurrantWeather({
     Key? key,
     required this.weatherMood,
@@ -36,8 +37,13 @@ class CurrantWeather extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Assets.lib.src.assets.svg.wind
-                  .svg(width: 25, color: ColorsGuide.primary),
+              Assets.lib.src.assets.svg.wind.svg(
+                width: 25,
+                colorFilter: ColorFilter.mode(
+                  ColorsGuide.primary,
+                  BlendMode.srcIn,
+                ),
+              ),
               SizedBox(
                 width: .5.percentOfWidth,
               ),
@@ -47,7 +53,10 @@ class CurrantWeather extends StatelessWidget {
               ),
               Assets.lib.src.assets.svg.humidity.svg(
                 width: 25,
-                color: ColorsGuide.primary,
+                colorFilter: ColorFilter.mode(
+                  ColorsGuide.primary,
+                  BlendMode.srcIn,
+                ),
               ),
               SizedBox(
                 width: .5.percentOfWidth,

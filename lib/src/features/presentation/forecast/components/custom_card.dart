@@ -76,8 +76,13 @@ class CustomCard extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(right: 5),
-                        child: Assets.lib.src.assets.svg.wind
-                            .svg(width: 25, color: ColorsGuide.primary),
+                        child: Assets.lib.src.assets.svg.wind.svg(
+                          width: 25,
+                          colorFilter: ColorFilter.mode(
+                            ColorsGuide.primary,
+                            BlendMode.srcIn,
+                          ),
+                        ),
                       ),
                       SizedBox(
                         height: .5.percentOfHeight,

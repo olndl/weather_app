@@ -22,7 +22,7 @@ dependencies:
   linter: ^1.27.0
   logging: ^1.1.0
   # work with svg pictures
-  flutter_svg: ^1.1.6
+  flutter_svg: ^2.0.1
   # http
   dio: ^4.0.6
   freezed_annotation: ^2.2.0
