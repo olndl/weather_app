@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/src/core/extensions/extensions.dart';
 import 'package:weather_app/src/core/theme/colors_guide.dart';
 import 'package:weather_app/src/core/theme/typography.dart';
-import 'package:weather_app/src/gen/assets.gen.dart';
 import 'package:weather_app/src/features/presentation/weather/components/custom_scaffold.dart';
 import 'package:weather_app/src/features/presentation/weather/pages/search_page.dart';
+import 'package:weather_app/src/gen/assets.gen.dart';
 
 class ErrorPage extends StatelessWidget {
   final String errorMsg;
+
   const ErrorPage({Key? key, required this.errorMsg}) : super(key: key);
 
   @override
@@ -32,7 +33,9 @@ class ErrorPage extends StatelessWidget {
                   child: Text(
                     'Oops!',
                     style: TextStyles.body.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 ElevatedButton(
@@ -88,14 +91,17 @@ class ErrorPage extends StatelessWidget {
                       Text(
                         'Retry',
                         style: TextStyles.callout.copyWith(
-                            color: Colors.black, fontWeight: FontWeight.bold),
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       IconButton(
                         onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const SearchPage()),
+                              builder: (context) => const SearchPage(),
+                            ),
                           );
                         },
                         icon: Assets.lib.src.assets.svg.hover

@@ -6,17 +6,18 @@ import 'package:weather_app/src/core/extensions/extensions.dart';
 import 'package:weather_app/src/core/theme/colors_guide.dart';
 import 'package:weather_app/src/core/theme/typography.dart';
 import 'package:weather_app/src/core/utils/utils.dart';
-import 'package:weather_app/src/features/presentation/weather/components/weather_details_card.dart';
-import 'package:weather_app/src/gen/assets.gen.dart';
 import 'package:weather_app/src/features/domain/models/air_pollution.dart';
 import 'package:weather_app/src/features/domain/models/hourly_forecast.dart';
 import 'package:weather_app/src/features/domain/models/weather.dart';
 import 'package:weather_app/src/features/presentation/weather/components/hourly_card.dart';
+import 'package:weather_app/src/features/presentation/weather/components/weather_details_card.dart';
+import 'package:weather_app/src/gen/assets.gen.dart';
 
 class WeatherDetails extends StatelessWidget {
   final Weather weather;
   final HourlyForecast forecast;
   final AirPollution airPollution;
+
   const WeatherDetails({
     Key? key,
     required this.weather,
@@ -86,7 +87,8 @@ class WeatherDetails extends StatelessWidget {
                 ),
                 isAirQuality: true,
                 comment: Utils.airQualityComment(
-                    airPollution.list?.first.main?.aqi ?? 0),
+                  airPollution.list?.first.main?.aqi ?? 0,
+                ),
               ),
             ),
             Expanded(

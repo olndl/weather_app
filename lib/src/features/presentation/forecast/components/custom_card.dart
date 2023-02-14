@@ -82,8 +82,10 @@ class CustomCard extends StatelessWidget {
                       SizedBox(
                         height: .5.percentOfHeight,
                       ),
-                      Text('$wind m/sec',
-                          style: TextStyles.callout.copyWith(fontSize: 15)),
+                      Text(
+                        '$wind m/sec',
+                        style: TextStyles.callout.copyWith(fontSize: 15),
+                      ),
                     ],
                   ),
                 ),

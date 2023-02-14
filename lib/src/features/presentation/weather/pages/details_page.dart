@@ -20,9 +20,10 @@ class DetailsPage extends StatelessWidget {
           return const LoadingPage();
         } else if (state is WeatherIsLoaded) {
           return DetailsPageBody(
-              weather: state.getWeather,
-              forecast: state.getForecast,
-              airPollution: state.getAirPollution);
+            weather: state.getWeather,
+            forecast: state.getForecast,
+            airPollution: state.getAirPollution,
+          );
         } else if (state is WeatherIsNotLoaded) {
           return ErrorPage(
             errorMsg: state.getError,
