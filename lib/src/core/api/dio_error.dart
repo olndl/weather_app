@@ -42,7 +42,7 @@ class DioException implements Exception {
       case 403:
         return 'The authenticated user is not allowed to access the specified API endpoint.';
       case 404:
-        return 'The requested resource does not exist.';
+        return 'The requested city does not exist.';
       case 405:
         return 'Method not allowed. Please check the Allow header for the allowed HTTP methods.';
       case 415:
