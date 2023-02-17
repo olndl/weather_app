@@ -1,7 +1,6 @@
 # Weather App
 
-Weather app on Flutter to see the forecast, view hour-by-hour temperature chart, get information
-about severe weather events, monitor air.
+Weather app on Flutter to see the forecast.
 
 ## Features
 
@@ -22,14 +21,11 @@ about severe weather events, monitor air.
 
 ## Screenshots
 
-<p float="left">
-<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-0.png" width="200" height="400"/>
-<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-1.png" width="200" height="400"/>
-<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-2.png" width="200" height="400"/>
-</p>
-<p float="left">
-<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-3.png" width="200" height="400"/>
-<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-4.png" width="200" height="400"/>
+<p float="center">
+<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-0.png" width="220" height="400"/>
+<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-1.png" width="220" height="400"/>
+<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-2.png" width="220" height="400"/>
+<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-3.png" width="220" height="400"/>
 </p>
 
 ## Packages Used
