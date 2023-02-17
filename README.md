@@ -1,6 +1,6 @@
-# weather_app
+# Weather App
 
-flutter weather app in progress.
+Weather app on Flutter to see the forecast, view hour-by-hour temperature chart, get information about severe weather events, monitor air.
 
 ## Screenshots
 <p float="left">
