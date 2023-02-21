@@ -22,10 +22,10 @@ Weather app on Flutter to see the forecast.
 ## Screenshots
 
 <p float="center">
-<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-0.png" width="220" height="400"/>
-<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-1.png" width="220" height="400"/>
-<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-2.png" width="220" height="400"/>
-<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-3.png" width="220" height="400"/>
+<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-0.png" width="240" height="400"/>
+<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-1.png" width="240" height="400"/>
+<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-2.png" width="240" height="400"/>
+<img src="https://github.com/olndl/weather_app/blob/f/refactoring/screenshots/mock-3.png" width="240" height="400"/>
 </p>
 
 ## Packages Used
