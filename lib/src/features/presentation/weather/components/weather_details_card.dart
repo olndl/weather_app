@@ -164,7 +164,7 @@ class WeatherDetailsCard extends StatelessWidget {
                               backgroundColor: ColorsGuide.darkSolid,
                               radius: 19,
                               child: Text(
-                                Utils.fromDegreesToDirection(degrees!),
+                                Utils.fromDegreesToDirection(degrees!, context),
                                 style:
                                     TextStyles.callout.copyWith(fontSize: 14),
                               ),

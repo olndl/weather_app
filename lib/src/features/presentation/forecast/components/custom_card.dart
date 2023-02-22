@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:weather_app/src/core/extensions/extensions.dart';
+import 'package:weather_app/src/core/localization/localization.dart';
 import 'package:weather_app/src/core/theme/colors_guide.dart';
 import 'package:weather_app/src/core/theme/typography.dart';
 import 'package:weather_app/src/core/utils/utils.dart';
@@ -88,7 +89,7 @@ class CustomCard extends StatelessWidget {
                         height: .5.percentOfHeight,
                       ),
                       Text(
-                        '$wind m/sec',
+                        '$wind ${Localization.of(context).msec}',
                         style: TextStyles.callout.copyWith(fontSize: 15),
                       ),
                     ],

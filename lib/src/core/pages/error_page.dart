@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/src/core/extensions/extensions.dart';
+import 'package:weather_app/src/core/localization/localization.dart';
 import 'package:weather_app/src/core/theme/colors_guide.dart';
 import 'package:weather_app/src/core/theme/typography.dart';
 import 'package:weather_app/src/features/presentation/weather/components/custom_scaffold.dart';
@@ -21,15 +22,21 @@ class ErrorPage extends StatelessWidget {
             side: BorderSide(color: ColorsGuide.primary, width: .3),
             borderRadius: BorderRadius.circular(40),
           ),
-          child: SizedBox(
-            height: 45.percentOfHeight,
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 10.percentOfWidth,
+            ),
+            height: 50.percentOfHeight,
             width: 80.percentOfWidth,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Assets.lib.src.assets.svg.emptyState.svg(),
+                SizedBox(
+                  height: 15.percentOfHeight,
+                  child: Assets.lib.src.assets.svg.emptyState.svg(),
+                ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(2.percentOfWidth),
                   child: Text(
                     'Oops!',
                     style: TextStyles.body.copyWith(
@@ -49,10 +56,11 @@ class ErrorPage extends StatelessWidget {
                         MaterialStateProperty.all(ColorsGuide.solid),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(1.percentOfWidth),
                     child: Text(
-                      'Something was wrong',
+                      Localization.of(context).wrong,
                       style: TextStyles.body,
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   onPressed: () {
@@ -73,6 +81,7 @@ class ErrorPage extends StatelessWidget {
                           child: Center(
                             child: Text(
                               errorMsg,
+                              textAlign: TextAlign.center,
                               style: TextStyles.headline
                                   .copyWith(color: ColorsGuide.darkSolid),
                             ),
@@ -85,11 +94,11 @@ class ErrorPage extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Row(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Retry',
+                        Localization.of(context).retry,
                         style: TextStyles.callout.copyWith(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
