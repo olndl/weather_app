@@ -29,6 +29,10 @@ Weather app on Flutter to see the forecast.
 <img src="https://user-images.githubusercontent.com/82782889/220498373-6830b1d1-4258-4d2f-91b3-2aff5e79fa79.png" width="220" height="400"/>
 </p>
 
+## Video
+
+https://user-images.githubusercontent.com/82782889/220505039-95ac0341-bee8-4b04-b3d2-df14fe8baa86.mov
+
 ## Packages Used
 
 - `flutter_bloc` for state management.
