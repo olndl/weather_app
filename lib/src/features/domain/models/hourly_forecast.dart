@@ -10,10 +10,26 @@ class HourlyForecast with _$HourlyForecast {
     required int message,
     required int cnt,
     required List<HoursForecastList> list,
+    required City? city,
   }) = _HourlyForecast;
 
   factory HourlyForecast.fromJson(Map<String, dynamic> json) =>
       _$HourlyForecastFromJson(json);
+}
+
+@freezed
+class City with _$City {
+  const factory City({
+    int? id,
+    String? name,
+    String? country,
+    int? population,
+    int? timezone,
+    int? sunrise,
+    int? sunset,
+  }) = _City;
+
+  factory City.fromJson(Map<String, dynamic> json) => _$CityFromJson(json);
 }
 
 @freezed

@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/src/core/extensions/extensions.dart';
+import 'package:weather_app/src/core/localization/localization.dart';
 import 'package:weather_app/src/core/theme/colors_guide.dart';
 import 'package:weather_app/src/features/domain/models/hourly_forecast.dart';
 import 'package:weather_app/src/gen/assets.gen.dart';
@@ -31,6 +32,7 @@ class Utils {
                 borderRadius: BorderRadius.circular(40),
               ),
               child: ClipRect(
+                clipBehavior: Clip.hardEdge,
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                   child: SizedBox(
@@ -74,16 +76,16 @@ class Utils {
     return degrees * (math.pi / 180);
   }
 
-  static String fromDegreesToDirection(int degrees) {
+  static String fromDegreesToDirection(int degrees, BuildContext context) {
     List<String> directions = [
-      'N',
-      'NE',
-      'E',
-      'SE',
-      'S',
-      'SW',
-      'W',
-      'NW',
+      Localization.of(context).N,
+      Localization.of(context).nE,
+      Localization.of(context).E,
+      Localization.of(context).sE,
+      Localization.of(context).S,
+      Localization.of(context).sW,
+      Localization.of(context).W,
+      Localization.of(context).nW,
     ];
     degrees = (degrees * 8 / 360).round();
     return degrees > 7 ? directions[0] : directions[degrees];
@@ -130,54 +132,58 @@ class Utils {
     return Assets.lib.src.assets.png.dayClear.path;
   }
 
-  static String pressureComment(int pressure) {
+  static String pressureComment(int pressure, BuildContext context) {
     pressure = fromHPaToMMhg(pressure);
     return pressure > 749 && pressure < 766
-        ? 'Normal atmospheric pressure'
-        : 'This value of atmospheric pressure can affect your health';
+        ? Localization.of(context).pressureNorm
+        : Localization.of(context).pressureNotNorm;
   }
 
-  static String feelsLikeComment(int temp, int feelsLike) {
+  static String feelsLikeComment(
+    int temp,
+    int feelsLike,
+    BuildContext context,
+  ) {
     if (feelsLike == temp) {
-      return 'Relevant';
+      return Localization.of(context).feelsRelevant;
     }
     if (!temp.isNegative) {
       if (feelsLike.isNegative) {
-        return 'Feels colder';
+        return Localization.of(context).feelsColder;
       } else {
         if (feelsLike - temp > 0) {
-          return 'Feels warmer';
+          return Localization.of(context).feelsWarmer;
         } else {
-          return 'Feels colder';
+          return Localization.of(context).feelsColder;
         }
       }
     } else {
       if (!feelsLike.isNegative) {
-        return 'Feels warmer';
+        return Localization.of(context).feelsWarmer;
       } else {
         if (feelsLike - temp > 0) {
-          return 'Feels warmer';
+          return Localization.of(context).feelsWarmer;
         } else {
-          return 'Feels colder';
+          return Localization.of(context).feelsColder;
         }
       }
     }
   }
 
-  static String airQualityComment(int aqi) {
+  static String airQualityComment(int aqi, BuildContext context) {
     switch (aqi) {
       case 1:
-        return 'Low health risk';
+        return Localization.of(context).aiqLow;
       case 2:
-        return 'Low health risk';
+        return Localization.of(context).aiqLow;
       case 3:
-        return 'Moderate health risk';
+        return Localization.of(context).aiqModerate;
       case 4:
-        return 'High health risk';
+        return Localization.of(context).aiqHigh;
       case 5:
-        return 'Very high health risk';
+        return Localization.of(context).aiqVeryHigh;
       default:
-        return 'No information';
+        return Localization.of(context).aiqNo;
     }
   }
 

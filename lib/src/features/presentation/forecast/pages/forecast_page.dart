@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/src/core/widgets/loading_page.dart';
-import 'package:weather_app/src/core/widgets/error_page.dart';
+import 'package:weather_app/src/core/pages/error_page.dart';
+import 'package:weather_app/src/core/pages/loading_page.dart';
 import 'package:weather_app/src/features/presentation/bloc/weather_bloc.dart';
 import 'package:weather_app/src/features/presentation/bloc/weather_state.dart';
-import 'package:weather_app/src/features/presentation/weather/pages/search_page.dart';
 import 'package:weather_app/src/features/presentation/forecast/components/forecast_page_body.dart';
+import 'package:weather_app/src/features/presentation/weather/pages/search_page.dart';
 
 class ForecastPage extends StatelessWidget {
   const ForecastPage({Key? key}) : super(key: key);

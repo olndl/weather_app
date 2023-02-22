@@ -4,7 +4,10 @@ import 'package:weather_app/src/core/utils/utils.dart';
 
 class WeatherIcon extends StatelessWidget {
   final String mood;
-  const WeatherIcon({Key? key, required this.mood}) : super(key: key);
+  const WeatherIcon({
+    Key? key,
+    required this.mood,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -26,8 +26,22 @@ class $LibSrcGen {
 class $LibSrcAssetsGen {
   const $LibSrcAssetsGen();
 
+  $LibSrcAssetsI18nGen get i18n => const $LibSrcAssetsI18nGen();
   $LibSrcAssetsPngGen get png => const $LibSrcAssetsPngGen();
   $LibSrcAssetsSvgGen get svg => const $LibSrcAssetsSvgGen();
+}
+
+class $LibSrcAssetsI18nGen {
+  const $LibSrcAssetsI18nGen();
+
+  /// File path: lib/src/assets/i18n/en.json
+  String get en => 'lib/src/assets/i18n/en.json';
+
+  /// File path: lib/src/assets/i18n/ru.json
+  String get ru => 'lib/src/assets/i18n/ru.json';
+
+  /// List of all assets
+  List<String> get values => [en, ru];
 }
 
 class $LibSrcAssetsPngGen {

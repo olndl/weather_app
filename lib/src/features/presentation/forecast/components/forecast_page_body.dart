@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/src/core/localization/localization.dart';
 import 'package:weather_app/src/core/theme/colors_guide.dart';
 import 'package:weather_app/src/core/theme/typography.dart';
 import 'package:weather_app/src/core/utils/utils.dart';
 import 'package:weather_app/src/features/domain/models/hourly_forecast.dart';
-import 'package:weather_app/src/features/presentation/weather/components/custom_scaffold.dart';
 import 'package:weather_app/src/features/presentation/forecast/components/custom_card.dart';
+import 'package:weather_app/src/features/presentation/weather/components/custom_scaffold.dart';
 
 class ForecastPageBody extends StatelessWidget {
   final HourlyForecast forecastAll;
+
   const ForecastPageBody({Key? key, required this.forecastAll})
       : super(key: key);
 
@@ -32,7 +34,7 @@ class ForecastPageBody extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.transparent,
           title: Text(
-            'Forecast',
+            Localization.of(context).forecast,
             style: TextStyles.title1,
           ),
           centerTitle: true,
@@ -62,13 +64,13 @@ class ForecastPageBody extends StatelessWidget {
                   tabs: [
                     Tab(
                       child: Text(
-                        'on 3 days',
+                        Localization.of(context).threeDays,
                         style: TextStyles.title2,
                       ),
                     ),
                     Tab(
                       child: Text(
-                        'on 5 days',
+                        Localization.of(context).fiveDays,
                         style: TextStyles.title2,
                       ),
                     ),
