@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/src/core/extensions/extensions.dart';
+import 'package:weather_app/src/core/localization/localization.dart';
 import 'package:weather_app/src/core/theme/colors_guide.dart';
 import 'package:weather_app/src/core/theme/typography.dart';
 import 'package:weather_app/src/core/utils/utils.dart';
@@ -45,9 +46,12 @@ class WeatherDetails extends StatelessWidget {
         Column(
           children: [
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 4),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 2.percentOfWidth,
+                  vertical: 1.percentOfHeight,
+                ),
                 child: Center(
                   child: Text(
                     DateFormat.yMMMMEEEEd(Platform.localeName).format(
@@ -60,7 +64,7 @@ class WeatherDetails extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 3,
               child: ListView.builder(
                 padding: const EdgeInsets.symmetric(vertical: 5),
                 scrollDirection: Axis.horizontal,
@@ -76,10 +80,10 @@ class WeatherDetails extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 3,
               child: WeatherDetailsCard(
                 width: 90.percentOfWidth,
-                title: 'air quality'.toUpperCase(),
+                title: Localization.of(context).aqi.toUpperCase(),
                 param: airPollution.list?.first.main?.aqi.toString(),
                 airCoeff: airPollution.list?.first.main?.aqi,
                 icon: Assets.lib.src.assets.svg.air.svg(
@@ -91,21 +95,23 @@ class WeatherDetails extends StatelessWidget {
                 isAirQuality: true,
                 comment: Utils.airQualityComment(
                   airPollution.list?.first.main?.aqi ?? 0,
+                  context,
                 ),
               ),
             ),
             Expanded(
-              flex: 5,
+              flex: 7,
               child: GridView.count(
-                physics: const NeverScrollableScrollPhysics(),
                 primary: false,
-                padding: const EdgeInsets.all(10),
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
+                padding: EdgeInsets.all(3.percentOfWidth),
+                crossAxisSpacing: 3.percentOfWidth,
+                mainAxisSpacing: 3.percentOfWidth,
                 crossAxisCount: 2,
                 children: <Widget>[
                   WeatherDetailsCard(
-                    title: 'feels like'.toUpperCase(),
+                    width: 20.percentOfWidth,
+                    height: 20.percentOfWidth,
+                    title: Localization.of(context).feelsLike.toUpperCase(),
                     icon: Assets.lib.src.assets.svg.temp.svg(
                       colorFilter: ColorFilter.mode(
                         ColorsGuide.secondary,
@@ -116,10 +122,13 @@ class WeatherDetails extends StatelessWidget {
                     comment: Utils.feelsLikeComment(
                       weather.main!.temp.round(),
                       weather.main!.feelsLike!.round(),
+                      context,
                     ),
                   ),
                   WeatherDetailsCard(
-                    title: 'wind'.toUpperCase(),
+                    width: 20.percentOfWidth,
+                    height: 20.percentOfWidth,
+                    title: Localization.of(context).wind.toUpperCase(),
                     icon: Assets.lib.src.assets.svg.wind.svg(
                       colorFilter: ColorFilter.mode(
                         ColorsGuide.secondary,
@@ -128,12 +137,14 @@ class WeatherDetails extends StatelessWidget {
                       width: 15,
                     ),
                     param: '${weather.wind!.speed!.round()}',
-                    units: 'm/sec',
+                    units: Localization.of(context).msec,
                     isWind: true,
                     degrees: weather.wind!.deg,
                   ),
                   WeatherDetailsCard(
-                    title: 'sunrise'.toUpperCase(),
+                    width: 20.percentOfWidth,
+                    height: 20.percentOfWidth,
+                    title: Localization.of(context).sunrise.toUpperCase(),
                     icon: Assets.lib.src.assets.svg.sunrise.svg(
                       colorFilter: ColorFilter.mode(
                         ColorsGuide.secondary,
@@ -141,13 +152,17 @@ class WeatherDetails extends StatelessWidget {
                       ),
                       width: 15,
                     ),
-                    param: Utils.toDateTimeHM(weather.sys!.sunrise!),
+                    param: Utils.toDateTimeHM(
+                      weather.sys!.sunrise!,
+                    ),
                     isWind: false,
                     comment:
-                        'Sunset: ${Utils.toDateTimeHM(weather.sys!.sunset!)}',
+                        '${Localization.of(context).sunset}: ${Utils.toDateTimeHM(weather.sys!.sunset!)}',
                   ),
                   WeatherDetailsCard(
-                    title: 'pressure'.toUpperCase(),
+                    width: 20.percentOfWidth,
+                    height: 20.percentOfWidth,
+                    title: Localization.of(context).pressure.toUpperCase(),
                     icon: Assets.lib.src.assets.svg.arrowDown.svg(
                       colorFilter: ColorFilter.mode(
                         ColorsGuide.secondary,
@@ -156,8 +171,9 @@ class WeatherDetails extends StatelessWidget {
                       width: 15,
                     ),
                     param: '${Utils.fromHPaToMMhg(weather.main!.pressure)}',
-                    units: 'mm Hg',
-                    comment: Utils.pressureComment(weather.main!.pressure),
+                    units: Localization.of(context).mmhg,
+                    comment:
+                        Utils.pressureComment(weather.main!.pressure, context),
                   ),
                 ],
               ),

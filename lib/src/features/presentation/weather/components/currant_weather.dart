@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:weather_app/src/core/extensions/extensions.dart';
+import 'package:weather_app/src/core/localization/localization.dart';
 import 'package:weather_app/src/core/theme/colors_guide.dart';
 import 'package:weather_app/src/core/theme/typography.dart';
 import 'package:weather_app/src/gen/assets.gen.dart';
@@ -47,7 +48,10 @@ class CurrantWeather extends StatelessWidget {
               SizedBox(
                 width: .5.percentOfWidth,
               ),
-              Text('$windSpeed m/sec', style: TextStyles.headline),
+              Text(
+                '$windSpeed ${Localization.of(context).msec}',
+                style: TextStyles.headline,
+              ),
               SizedBox(
                 width: 2.percentOfWidth,
               ),

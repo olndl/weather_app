@@ -19,7 +19,7 @@ jobs:
           SECRETS_FILE_CONTENT_PATH: lib/src/app/app_secrets.dart
 
       - name: Get Dependencies
-        run: flutter pub get
+        run: flutter packages pub get
 
       - name: Run build_runner
         run: flutter pub run build_runner build --delete-conflicting-outputs

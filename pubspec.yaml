@@ -15,7 +15,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_localizations:
     sdk: flutter
-  localization: ^2.1.0
+  #  localization: ^2.1.0
   #  work with datetime
   intl: ^0.17.0
   #  code style
@@ -50,6 +50,7 @@ flutter:
   assets:
     - lib/src/assets/svg/
     - lib/src/assets/png/
+    - lib/src/assets/i18n/
   fonts:
     - family: Livvic-Thin
       fonts:

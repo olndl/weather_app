@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/src/core/widgets/error_page.dart';
-import 'package:weather_app/src/core/widgets/loading_page.dart';
+import 'package:weather_app/src/core/pages/error_page.dart';
+import 'package:weather_app/src/core/pages/loading_page.dart';
 import 'package:weather_app/src/features/presentation/bloc/weather_bloc.dart';
 import 'package:weather_app/src/features/presentation/bloc/weather_state.dart';
 import 'package:weather_app/src/features/presentation/weather/components/details_page_body.dart';

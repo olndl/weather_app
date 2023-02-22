@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/src/core/constants/interface.dart';
 import 'package:weather_app/src/core/extensions/extensions.dart';
+import 'package:weather_app/src/core/localization/localization.dart';
 import 'package:weather_app/src/core/theme/colors_guide.dart';
 import 'package:weather_app/src/core/theme/typography.dart';
-import 'package:weather_app/src/features/presentation/weather/components/custom_button_text.dart';
-import 'package:weather_app/src/gen/assets.gen.dart';
 import 'package:weather_app/src/features/presentation/bloc/weather_bloc.dart';
 import 'package:weather_app/src/features/presentation/bloc/weather_event.dart';
+import 'package:weather_app/src/features/presentation/weather/components/custom_button_text.dart';
 import 'package:weather_app/src/features/presentation/weather/pages/details_page.dart';
+import 'package:weather_app/src/gen/assets.gen.dart';
 
 class EditText extends StatelessWidget {
   const EditText({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class EditText extends StatelessWidget {
           TextFormField(
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter some text';
+                return Localization.of(context).warning;
               }
               return null;
             },
@@ -44,14 +44,14 @@ class EditText extends StatelessWidget {
                 child: Assets.lib.src.assets.svg.magnifyingglass.svg(),
               ),
               hintStyle: TextStyle(color: ColorsGuide.primary),
-              hintText: Interface.hint,
+              hintText: Localization.of(context).hint,
             ),
           ),
           SizedBox(
             height: 2.percentOfHeight,
           ),
           CustomButtonText(
-            title: Interface.approve,
+            title: Localization.of(context).confirm,
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 weatherBloc.add(
