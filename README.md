@@ -22,11 +22,11 @@ Weather app on Flutter to see the forecast.
 ## Screenshots
 
 <p float="center">
-<img src="https://github.com/olndl/weather_app/blob/dev/screenshots/mock-0.png" width="240" height="400"/>
-<img src="https://github.com/olndl/weather_app/blob/dev/screenshots/mock-1.png" width="240" height="400"/>
-<img src="https://github.com/olndl/weather_app/blob/dev/screenshots/mock-2.png" width="240" height="400"/>
-<img src="https://github.com/olndl/weather_app/blob/dev/screenshots/mock-3.png" width="240" height="400"/>
-<img src="https://user-images.githubusercontent.com/82782889/220498373-6830b1d1-4258-4d2f-91b3-2aff5e79fa79.png" width="240" height="400"/>
+<img src="https://github.com/olndl/weather_app/blob/dev/screenshots/mock-0.png" width="220" height="380"/>
+<img src="https://github.com/olndl/weather_app/blob/dev/screenshots/mock-1.png" width="220" height="380"/>
+<img src="https://github.com/olndl/weather_app/blob/dev/screenshots/mock-2.png" width="220" height="380"/>
+<img src="https://github.com/olndl/weather_app/blob/dev/screenshots/mock-3.png" width="220" height="380"/>
+<img src="https://user-images.githubusercontent.com/82782889/220498373-6830b1d1-4258-4d2f-91b3-2aff5e79fa79.png" width="220" height="380"/>
 </p>
 
 ## Video
