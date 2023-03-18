@@ -12,7 +12,6 @@ Weather app on Flutter to see the forecast.
 - [x] Detail display: pressure, sunrise/sunset time, humidity, wind speed
 - [x] Work with backend is implemented, data is sent/received from
   the https://openweathermap.org/api
-- [x] Organized saving data to disk using a SQFLite
 - [x] Internationalization
 - [X] State-management and DI implemented using `flutter_bloc`
 - [x] App icon
